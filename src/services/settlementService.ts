@@ -5,6 +5,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 
 import { Settlement } from '../types';
 import { SETTLEMENTS_ADDRESS, SETTLEMENTS_ATTR } from '../constants';
+import { useContract } from '../hooks';
 import { parseBalance } from '../utils';
 import settlementsABI from '../abis/settlements.json';
 
@@ -43,7 +44,9 @@ export const getSettlementsByAddress = async (
 	library: any
 ): Promise<any> => {
 	return new Promise<any>(async (resolve, reject) => {
-		const contract = new Contract(SETTLEMENTS_ADDRESS, settlementsABI, library);
+		// const contract = new Contract(SETTLEMENTS_ADDRESS, settlementsABI, library);
+		const {contract} = useContract(SETTLEMENTS_ADDRESS, settlementsABI)
+
 
 		// Get amount of users settlements
 		const result: string = await contract.balanceOf(userAddress).catch(() => {
