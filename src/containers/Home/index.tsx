@@ -1,76 +1,62 @@
 import React from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { InjectedConnector } from '@web3-react/injected-connector';
 
-import { SUPPORTED_CHAIN_IDS } from '../../constants';
+import { useWalletContext } from '../../contexts/WalletContext';
 import * as S from './styled';
 import Layout from '../../components/Layout';
 import UserHoldings from '../../components/UserHoldings';
+import { GithubIcon } from '../../components/Shared';
+
+export const ExtLink: React.FC<{ href: string }> = ({
+	href,
+	children,
+	...props
+}) => (
+	<a href={href} {...props} target="_blank" rel="noreferrer noopener">
+		{children}
+	</a>
+);
 
 const Home: React.FC = () => {
-	const { active, account, activate, deactivate } = useWeb3React();
-
-	const injected = new InjectedConnector({
-		supportedChainIds: SUPPORTED_CHAIN_IDS,
-	});
-
-	const onConnect = async () => {
-		await activate(injected).catch(error =>
-			console.error('Failed to connect', error)
-		);
-	};
-
-	const onDisconnect = () => {
-		try {
-			deactivate();
-		} catch (error) {
-			console.error('Failed to disconnect', error);
-		}
-	};
+	const { address, connectWallet, disconnectWallet } = useWalletContext();
 
 	return (
 		<Layout title="settlements dashboard">
 			<S.Wrapper>
 				<S.Title>settlements dashboard</S.Title>
 				<S.Description>
-					<em>come frens, gaze upon your holdings</em>
-					<br />
-					<br />
-					<small>
-						a wip by{' '}
-						<a
-							href="https://twitter.com/zhoug0x"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							zhoug
-						</a>{' '}
-						for{' '}
-						<a
-							href="https://thesettlements.world"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
+					<em>GAZE UPON YOUR HOLDINGS...</em>
+
+					<p>
+						by <ExtLink href="https://twitter.com/zhoug0x">zhoug</ExtLink> for{' '}
+						<ExtLink href="https://thesettlements.world">
 							the settlements
-						</a>
-					</small>
+						</ExtLink>
+					</p>
+
+					<div>
+						<ExtLink href="https://github.com/zhoug0x/settlements-dashboard">
+							<GithubIcon width="2em" />
+						</ExtLink>
+					</div>
 				</S.Description>
 				<S.WalletControls>
-					{active ? (
+					{address ? (
 						<>
 							<S.WalletData>
-								connected address: <strong>{account}</strong>
+								connected address: <strong>{address}</strong>
 							</S.WalletData>
-							<S.Button onClick={onDisconnect}>Disconnect</S.Button>
+							<S.Button onClick={() => disconnectWallet()}>Disconnect</S.Button>
+							<UserHoldings address={address} />
 						</>
 					) : (
 						<>
 							<S.WalletData>not connected</S.WalletData>
-							<S.Button onClick={onConnect}>Connect to Wallet</S.Button>
+							<S.Button onClick={() => connectWallet()}>
+								Connect to Wallet
+							</S.Button>
 						</>
 					)}
 				</S.WalletControls>
-			{account && <UserHoldings address={account} />}
 			</S.Wrapper>
 		</Layout>
 	);

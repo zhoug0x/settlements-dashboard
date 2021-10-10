@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Island } from '../types';
-import { toBalanceString } from '../utils';
-import CardWrapper from './CardWrapper';
+import { Island } from '../../types';
+import { toBalanceString } from '../../utils';
+import { CardWrapper } from '../Shared';
 
 interface IslandCardProps {
 	island: Island;
