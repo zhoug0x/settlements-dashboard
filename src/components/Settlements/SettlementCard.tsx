@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Settlement } from '../types';
-import { toBalanceString } from '../utils';
-import CardWrapper from './CardWrapper';
+import { Settlement } from '../../types';
+import { toBalanceString } from '../../utils';
+import { CardWrapper } from '../Shared';
 
 interface SettlementCardProps {
 	settlement: Settlement;
