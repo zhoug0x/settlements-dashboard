@@ -1,30 +1,52 @@
 import { useState, useEffect } from 'react';
 
-import { SETTLEMENTS_ADDRESS, SETTLEMENTS_ATTR } from '../../constants';
 import { Settlement } from '../../types';
-import { useContract } from '../../hooks';
-import settlementsABI from '../../abis/settlements.json';
+import { useSettlementsContract } from '../../hooks';
+import { useWalletContext } from '../../contexts/WalletContext';
+import { getERC721TokenIds } from '../../services/data.service';
+import { getSettlementsByIds } from '../../services/settlements.service';
 
 import { Heading, CardGroup } from '../Shared';
 import SettlementCard from './SettlementCard';
 
-const Settlements = () => {
-	const { contract } = useContract(SETTLEMENTS_ADDRESS, settlementsABI);
+const Settlements: React.FC = () => {
+	const { address } = useWalletContext();
+	const settlementsContract = useSettlementsContract();
+
 	const [settlements, setSettlements] = useState<Settlement[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useEffect(() => {
-		console.log('settlements contract:', contract);
-	}, [contract]);
+		(async () => {
+			if (address) {
+				try {
+					const ids = await getERC721TokenIds(address, settlementsContract);
+					const settlementsData = await getSettlementsByIds(
+						ids,
+						settlementsContract
+					);
+					setSettlements(settlementsData);
+					setIsLoading(false);
+				} catch (error) {
+					console.error(error);
+				}
+			}
+		})();
+	}, [address]);
 
-	return settlements ? (
+	return !isLoading ? (
 		<CardGroup>
-			{settlements.map((settlement: Settlement) => {
-				return <SettlementCard key={settlement.id} settlement={settlement} />;
-			})}
+			{settlements.length > 0 ? (
+				settlements.map((settlement: Settlement) => (
+					<SettlementCard key={settlement.id} settlement={settlement} />
+				))
+			) : (
+				<Heading>no settlements</Heading>
+			)}
 		</CardGroup>
 	) : (
 		<>
-			<Heading>no settlements...</Heading>
+			<Heading>loading settlements...</Heading>
 			<hr />
 		</>
 	);

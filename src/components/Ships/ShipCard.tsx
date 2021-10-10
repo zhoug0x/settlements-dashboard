@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Ship } from '../types';
-import { toBalanceString } from '../utils';
-import { CardWrapper } from './Shared';
+import { Ship } from '../../types';
+import { toBalanceString } from '../../utils';
+import { CardWrapper } from '../Shared';
 
 interface ShipCardProps {
 	ship: Ship;
