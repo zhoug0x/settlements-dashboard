@@ -8,18 +8,17 @@ export const Title = styled.h1`
 	font-size: 4rem;
 	color: ${({ theme }) => theme.colors.primary};
 	letter-spacing: -0.06em;
-	margin: 2rem 0 0 0;
+	margin: 2rem 0 1rem 0;
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
 	font-size: 0.75rem;
 	font-weight: 600;
 	color: ${({ theme }) => theme.colors.secondary};
-	margin-bottom: 1rem;
 `;
 
 export const WalletControls = styled.div`
-	margin-top: 2rem;
+	margin-top: 1rem;
 `;
 
 export const Button = styled.button`

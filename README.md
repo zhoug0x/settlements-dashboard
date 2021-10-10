@@ -1,8 +1,8 @@
 # settlements dashboard
 
-> A single page to see all of your holdings in [The Settlements](https://thesettlements.world) by [zhoug](https://twitter.com/zhoug0x)
+> A single page to view all of your assets in [The Settlements universe](https://thesettlements.world)
 
-## run locally
+## to run locally
 
 ```bash
 # install deps
@@ -13,3 +13,5 @@ npm run dev
 
 # go to http://localhost:3000
 ```
+
+by [zhoug](https://twitter.com/zhoug0x)

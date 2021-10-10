@@ -4,6 +4,17 @@ import { useWalletContext } from '../../contexts/WalletContext';
 import * as S from './styled';
 import Layout from '../../components/Layout';
 import UserHoldings from '../../components/UserHoldings';
+import { GithubIcon } from '../../components/Shared';
+
+export const ExtLink: React.FC<{ href: string }> = ({
+	href,
+	children,
+	...props
+}) => (
+	<a href={href} {...props} target="_blank" rel="noreferrer noopener">
+		{children}
+	</a>
+);
 
 const Home: React.FC = () => {
 	const { address, connectWallet, disconnectWallet } = useWalletContext();
@@ -13,27 +24,20 @@ const Home: React.FC = () => {
 			<S.Wrapper>
 				<S.Title>settlements dashboard</S.Title>
 				<S.Description>
-					<em>come frens, gaze upon your holdings</em>
-					<br />
-					<br />
-					<small>
-						a wip by{' '}
-						<a
-							href="https://twitter.com/zhoug0x"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							zhoug
-						</a>{' '}
-						for{' '}
-						<a
-							href="https://thesettlements.world"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
+					<em>GAZE UPON YOUR HOLDINGS...</em>
+
+					<p>
+						by <ExtLink href="https://twitter.com/zhoug0x">zhoug</ExtLink> for{' '}
+						<ExtLink href="https://thesettlements.world">
 							the settlements
-						</a>
-					</small>
+						</ExtLink>
+					</p>
+
+					<div>
+						<ExtLink href="https://github.com/zhoug0x/settlements-dashboard">
+							<GithubIcon width="2em" />
+						</ExtLink>
+					</div>
 				</S.Description>
 				<S.WalletControls>
 					{address ? (
@@ -47,7 +51,9 @@ const Home: React.FC = () => {
 					) : (
 						<>
 							<S.WalletData>not connected</S.WalletData>
-							<S.Button onClick={() => connectWallet()}>Connect to Wallet</S.Button>
+							<S.Button onClick={() => connectWallet()}>
+								Connect to Wallet
+							</S.Button>
 						</>
 					)}
 				</S.WalletControls>
