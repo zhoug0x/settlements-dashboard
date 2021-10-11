@@ -31,30 +31,30 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 				</h2>
 				<hr />
 				<TraitList>
-					<li>{name}</li>
-					<li>{expedition}</li>
+					<li>⛵ {name}</li>
+					<li>🔱 {expedition}</li>
 					<li>
-						{length}
+						📏 {length}
 						<small>ft</small>
 					</li>
 					<li>
-						{speed}
+						⏩ {speed}
 						<small>km/h</small>
 					</li>
 				</TraitList>
 				<hr />
 
 				<div>
-					<span>Status: </span>
+					<span>📌</span>
 					<span>{`${description} - ${targetType} #${targetID}`}</span>
 				</div>
 				<div>
-					<span>ETA: </span>
+					<span>⏲️ ETA </span>
 					<span>{`${blocksUntilNext} blocks`}</span>
 				</div>
 
 				<div>
-					<span>Route: </span>
+					<span>🧭 Route: </span>
 					{route.map((point, index) => (
 						<span key={`${point.id}-${Math.random()}`}>
 							{`${point.type.slice(0, 1)}${point.id}${
@@ -66,7 +66,7 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 				<hr />
 
 				{rssBals.map(rss => (
-					<p key={`${rss.name}-${Math.random()}`}>{`${
+					<p key={`${rss.name}-${Math.random()}`}>{`${rss.icon} ${
 						rss.name
 					}: ${toBalanceString(rss.balance)}`}</p>
 				))}

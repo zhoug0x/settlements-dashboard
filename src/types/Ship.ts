@@ -1,5 +1,6 @@
 interface Resource {
 	name: string;
+	icon: string;
 	balance: number;
 }
 
