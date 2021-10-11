@@ -20,6 +20,8 @@ export enum RSS_ADDRESS {
 	FISH = '0x2676D86D4d474732e2761FA490F2B65bCaEa4B33',
 	PEARL = '0xac709ce0bbd663f334bbef9525f56063d8c1e5ae',
 	DIAMOND = '0xce174947bbbc84694f2bfcd0c694a11bbd3a44a4',
+	GRAIN = '0xC8a505a1Df5c80f7297d8E2A963cfB1872e6A62c',
+	OIL = '0xd136967d807b8F789aedef5108E12742611BDeff',
 }
 
 //~*~ Game constants
@@ -36,6 +38,8 @@ export const RSS_MANIFEST = [
 	{ name: 'Fish', address: RSS_ADDRESS.FISH },
 	{ name: 'Pearl', address: RSS_ADDRESS.PEARL },
 	{ name: 'Diamond', address: RSS_ADDRESS.DIAMOND },
+	{ name: 'Grain', address: RSS_ADDRESS.GRAIN },
+	{ name: 'Oil', address: RSS_ADDRESS.OIL },
 ];
 
 export const SETTLEMENTS_ATTR = {
