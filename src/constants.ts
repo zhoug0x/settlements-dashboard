@@ -20,22 +20,26 @@ export enum RSS_ADDRESS {
 	FISH = '0x2676D86D4d474732e2761FA490F2B65bCaEa4B33',
 	PEARL = '0xac709ce0bbd663f334bbef9525f56063d8c1e5ae',
 	DIAMOND = '0xce174947bbbc84694f2bfcd0c694a11bbd3a44a4',
+	GRAIN = '0xC8a505a1Df5c80f7297d8E2A963cfB1872e6A62c',
+	OIL = '0xd136967d807b8F789aedef5108E12742611BDeff',
 }
 
 //~*~ Game constants
-// WARNING: some array values are grabbed by index position, be careful if editing!
-export const RSS_MANIFEST = [
-	{ name: '$SETL', address: RSS_ADDRESS.SETL },
-	{ name: 'Iron', address: RSS_ADDRESS.IRON },
-	{ name: 'Gold', address: RSS_ADDRESS.GOLD },
-	{ name: 'Silver', address: RSS_ADDRESS.SILVER },
-	{ name: 'Wood', address: RSS_ADDRESS.WOOD },
-	{ name: 'Wool', address: RSS_ADDRESS.WOOL },
-	{ name: 'Water', address: RSS_ADDRESS.WATER },
-	{ name: 'Grass', address: RSS_ADDRESS.GRASS },
-	{ name: 'Fish', address: RSS_ADDRESS.FISH },
-	{ name: 'Pearl', address: RSS_ADDRESS.PEARL },
-	{ name: 'Diamond', address: RSS_ADDRESS.DIAMOND },
+// WARNING: array values are grabbed by index position, be careful if editing!
+export const RSS = [
+	{ name: '$SETL', address: RSS_ADDRESS.SETL, icon: '📜' }, // 0
+	{ name: 'Iron', address: RSS_ADDRESS.IRON, icon: '⛓️' }, // 1
+	{ name: 'Gold', address: RSS_ADDRESS.GOLD, icon: '🥇' }, // 2
+	{ name: 'Silver', address: RSS_ADDRESS.SILVER, icon: '🥈' }, // 3
+	{ name: 'Wood', address: RSS_ADDRESS.WOOD, icon: '🪵' }, // 4
+	{ name: 'Wool', address: RSS_ADDRESS.WOOL, icon: '🐑' }, // 5
+	{ name: 'Water', address: RSS_ADDRESS.WATER, icon: '💧' }, // 6
+	{ name: 'Grass', address: RSS_ADDRESS.GRASS, icon: '🌱' }, // 7
+	{ name: 'Grain', address: RSS_ADDRESS.GRAIN, icon: '🌾' }, // 8
+	{ name: 'Fish', address: RSS_ADDRESS.FISH, icon: '🐟' }, // 9
+	{ name: 'Pearl', address: RSS_ADDRESS.PEARL, icon: '🦪' }, // 10
+	{ name: 'Oil', address: RSS_ADDRESS.OIL, icon: '🪔' }, // 11
+	{ name: 'Diamond', address: RSS_ADDRESS.DIAMOND, icon: '💎' }, // 12
 ];
 
 export const SETTLEMENTS_ATTR = {
@@ -60,16 +64,7 @@ export const SETTLEMENTS_ATTR = {
 		'Information',
 		'Future',
 	],
-	RESOURCES: [
-		'Iron',
-		'Gold',
-		'Silver',
-		'Wood',
-		'Wool',
-		'Water',
-		'Grass',
-		'Grain',
-	],
+	RESOURCES: [RSS[1], RSS[2], RSS[3], RSS[4], RSS[5], RSS[6], RSS[7], RSS[8]],
 	MORALES: [
 		'Expectant',
 		'Enlightened',
@@ -97,7 +92,7 @@ export const SETTLEMENTS_ATTR = {
 };
 
 export const ISLANDS_ATTR = {
-	RESOURCES: ['Fish', 'Wood', 'Iron', 'Silver', 'Pearl', 'Oil', 'Diamond'],
+	RESOURCES: [RSS[9], RSS[4], RSS[1], RSS[3], RSS[10], RSS[11], RSS[12]],
 	CLIMATES: ['Temperate', 'Rainy', 'Humid', 'Arid', 'Tropical', 'Icy'],
 	TERRAINS: ['Flatlands', 'Hilly', 'Canyons', 'Mountainous'],
 };
