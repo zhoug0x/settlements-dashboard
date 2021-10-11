@@ -15,9 +15,11 @@ const _parseIslandData = (
 		id,
 		traits: {
 			rss: {
-				name: ISLANDS_ATTR.RESOURCES[attr[0]],
+				name: ISLANDS_ATTR.RESOURCES[attr[0]].name,
 				key: attr[0],
+				icon: ISLANDS_ATTR.RESOURCES[attr[0]].icon,
 			},
+
 			climate: {
 				name: ISLANDS_ATTR.CLIMATES[attr[1]],
 				key: attr[1],

@@ -21,10 +21,7 @@ const Islands: React.FC = () => {
 			if (address) {
 				try {
 					const ids = await getERC721TokenIds(address, islandsContract);
-					const islandsData = await getIslandsByIds(
-						ids,
-						islandsContract
-					);
+					const islandsData = await getIslandsByIds(ids, islandsContract);
 					setIslands(islandsData);
 					setIsLoading(false);
 				} catch (error) {
@@ -45,10 +42,9 @@ const Islands: React.FC = () => {
 			)}
 		</CardGroup>
 	) : (
-		<>
+		<CardGroup>
 			<Heading>loading islands...</Heading>
-			<hr />
-		</>
+		</CardGroup>
 	);
 };
 

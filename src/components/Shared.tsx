@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const ExtLink: React.FC<any> = ({ children, ...props }) => (
+	<a {...props} target="_blank" rel="noreferrer noopener">
+		{children}
+	</a>
+);
+
 export const GithubIcon: React.FC<{ width?: string; color?: string }> = ({
 	width = '1em',
 	color = 'currentColor',
@@ -48,4 +54,9 @@ export const CardWrapper = styled.div`
 	& > a {
 		color: inherit;
 	}
+`;
+
+export const TraitList = styled.ul`
+	list-style: none;
+	padding: 0;
 `;

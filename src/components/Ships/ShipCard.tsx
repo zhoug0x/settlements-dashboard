@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Ship } from '../../types';
 import { toBalanceString } from '../../utils';
-import { CardWrapper } from '../Shared';
+import { CardWrapper, ExtLink, TraitList } from '../Shared';
 
 interface ShipCardProps {
 	ship: Ship;
@@ -23,18 +23,14 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 
 	return (
 		<CardWrapper>
-			<a
-				href={`https://thesettlements.world/ship/${id}`}
-				target="_blank"
-				rel="noreferrer noopener"
-			>
+			<ExtLink href={`https://thesettlements.world/ship/${id}`}>
 				<h3 style={{ margin: 0 }}>ship</h3>
 				<h2 style={{ margin: 0 }}>
 					<small>#</small>
 					{id}
 				</h2>
 				<hr />
-				<ul>
+				<TraitList>
 					<li>{name}</li>
 					<li>{expedition}</li>
 					<li>
@@ -45,12 +41,12 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 						{speed}
 						<small>km/h</small>
 					</li>
-				</ul>
+				</TraitList>
 				<hr />
 
 				<div>
 					<span>Status: </span>
-					<span>{`${description} to ${targetType} #${targetID}`}</span>
+					<span>{`${description} - ${targetType} #${targetID}`}</span>
 				</div>
 				<div>
 					<span>ETA: </span>
@@ -74,7 +70,7 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 						rss.name
 					}: ${toBalanceString(rss.balance)}`}</p>
 				))}
-			</a>
+			</ExtLink>
 		</CardWrapper>
 	);
 };
