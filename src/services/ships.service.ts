@@ -13,7 +13,7 @@ import { Ship } from '../types';
 // TODO: type everything
 const _parseShipStatus = (statusKey: number, target: any): any => {
 	return {
-		description: SHIP_STATUS[statusKey - 1],
+		description: SHIP_STATUS[statusKey],
 		statusKey,
 		targetType: target.type,
 		targetID: target.id,
