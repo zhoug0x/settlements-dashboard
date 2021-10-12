@@ -18,7 +18,11 @@ const _parseSettlementData = (id: string, attr: any, bal: any): Settlement => {
 				key: attr[1],
 			},
 			age: { name: SETTLEMENTS_ATTR.AGES[attr[2]], key: attr[2] },
-			rss: { name: SETTLEMENTS_ATTR.RESOURCES[attr[3]], key: attr[3] },
+			rss: {
+				name: SETTLEMENTS_ATTR.RESOURCES[attr[3]].name,
+				key: attr[3],
+				icon: SETTLEMENTS_ATTR.RESOURCES[attr[3]].icon,
+			},
 			morale: {
 				name: SETTLEMENTS_ATTR.MORALES[attr[4]],
 				key: attr[4],

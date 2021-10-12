@@ -4,17 +4,7 @@ import { useWalletContext } from '../../contexts/WalletContext';
 import * as S from './styled';
 import Layout from '../../components/Layout';
 import UserHoldings from '../../components/UserHoldings';
-import { GithubIcon } from '../../components/Shared';
-
-export const ExtLink: React.FC<{ href: string }> = ({
-	href,
-	children,
-	...props
-}) => (
-	<a href={href} {...props} target="_blank" rel="noreferrer noopener">
-		{children}
-	</a>
-);
+import { ExtLink, GithubIcon } from '../../components/Shared';
 
 const Home: React.FC = () => {
 	const { address, connectWallet, disconnectWallet } = useWalletContext();

@@ -1,15 +1,11 @@
 import { Contract } from '@ethersproject/contracts';
-import { formatUnits } from '@ethersproject/units';
 import { formatFixed } from '@ethersproject/bignumber';
-import type { BigNumber } from '@ethersproject/bignumber';
 
 import {
-	SHIPS_ADDRESS,
-	SHIPS_HELPER_ADDRESS,
 	SHIP_STATUS,
 	ISLANDS_ADDRESS,
 	SETTLEMENTS_ADDRESS,
-	RSS_MANIFEST,
+	RSS,
 } from '../constants';
 import { parseBalance } from '../utils';
 import { Ship } from '../types';
@@ -17,7 +13,7 @@ import { Ship } from '../types';
 // TODO: type everything
 const _parseShipStatus = (statusKey: number, target: any): any => {
 	return {
-		description: SHIP_STATUS[statusKey - 1],
+		description: SHIP_STATUS[statusKey],
 		statusKey,
 		targetType: target.type,
 		targetID: target.id,
@@ -50,12 +46,13 @@ const _parseShipData = (
 ): Ship => {
 	// Parse resource names & balances
 	const rssBals = bals.map((bal: any) => {
-		const myRss = RSS_MANIFEST.find(
-			rss => rss.address === bal.resourceTokenContract
+		const myRss = RSS.find(
+			(rss: any) => rss.address === bal.resourceTokenContract
 		);
 
 		return {
 			name: myRss?.name || 'Resource',
+			icon: myRss?.icon || 'Resource',
 			balance: parseBalance(bal.amount),
 		};
 	});

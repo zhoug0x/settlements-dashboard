@@ -44,10 +44,9 @@ const Ships: React.FC = () => {
 			)}
 		</CardGroup>
 	) : (
-		<>
+		<CardGroup>
 			<Heading>loading ships...</Heading>
-			<hr />
-		</>
+		</CardGroup>
 	);
 };
 
