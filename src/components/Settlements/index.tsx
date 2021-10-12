@@ -46,7 +46,7 @@ const Settlements: React.FC = () => {
 		</CardGroup>
 	) : (
 		<CardGroup>
-			<Heading>loading islands...</Heading>
+			<Heading>loading settlements...</Heading>
 		</CardGroup>
 	);
 };
