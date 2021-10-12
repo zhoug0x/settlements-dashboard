@@ -54,7 +54,7 @@ const ShipCard: React.FC<ShipCardProps> = ({ ship }) => {
 				</div>
 
 				<div>
-					<span>🧭 Route: </span>
+					<span>🗺️ Route: </span>
 					{route.map((point, index) => (
 						<span key={`${point.id}-${Math.random()}`}>
 							{`${point.type.slice(0, 1)}${point.id}${
