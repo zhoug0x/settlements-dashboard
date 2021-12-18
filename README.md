@@ -1,8 +1,8 @@
 # settlements dashboard
 
-https://settlements-dashboard.vercel.app/
-
 > A single page to view all of your assets in [The Settlements universe](https://thesettlements.world)
+
+[settlements-dashboard.vercel.app](https://settlements-dashboard.vercel.app)
 
 ## to run locally
 
