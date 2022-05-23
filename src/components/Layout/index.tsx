@@ -5,6 +5,7 @@ import * as S from './styled';
 
 interface LayoutProps {
 	title: string;
+	children: any;
 }
 
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {

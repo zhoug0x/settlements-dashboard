@@ -9,7 +9,8 @@ const getLibrary = (provider: ExternalProvider | JsonRpcFetchFunc) => {
 	return new W3Provider(provider);
 };
 
-const Web3Provider: React.FC = ({ children }) => (
+// TODO: replace `children: any` solution
+const Web3Provider: React.FC<{ children: any }> = ({ children }) => (
 	<Web3ReactProvider getLibrary={getLibrary}>{children}</Web3ReactProvider>
 );
 

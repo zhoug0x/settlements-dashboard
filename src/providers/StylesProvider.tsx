@@ -2,7 +2,8 @@ import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { theme, GlobalStyle } from '../styles';
 
-const StylesProvider: React.FC = ({ children }) => {
+// TODO: replace `children: any` solution
+const StylesProvider: React.FC<{ children: any }> = ({ children }) => {
 	return (
 		<>
 			<Normalize />
