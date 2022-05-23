@@ -18,7 +18,9 @@ const WalletContext = createContext<WalletContextProps>({
 
 export const useWalletContext = () => useContext(WalletContext);
 
-export const WalletContextProvider: React.FC = ({ children }) => {
+export const WalletContextProvider: React.FC<{ children: any }> = ({
+	children,
+}) => {
 	const { active, account, activate, deactivate } = useWeb3React();
 	const [address, setAddress] = useState<string | undefined>(undefined);
 	const injected = useMemo(
